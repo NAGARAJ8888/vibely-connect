@@ -1,35 +1,99 @@
-Vibely Connect
-Vibely Connect is a modern, full-stack social media platform featuring real-time communication, short-form video content ("Loops"), and a sleek, media-centric user experience.
+# 🚀 Vibely Connect — Full-Stack Real-Time Social Media Platform
 
-🚀 Tech Stack
-Frontend: React 19, Redux Toolkit, Tailwind CSS v4, Socket.io-client, Axios, React Router v7.
-Backend: Node.js, Express, MongoDB (Mongoose), Socket.io, JWT, Cloudinary, Nodemailer.
-Hosting: Vercel (Frontend), Render (Backend).
-✨ Key Features
-Real-Time Interactivity: Instant messaging, live notifications, and real-time online status tracking powered by Socket.io.
-Media-Rich Content: Support for image and video posts, ephemeral Stories, and short-form "Loops" (video) with high-performance playback.
-Robust Social Engine: Advanced follow/unfollow system, dynamic feed generation, interactive likes, and nested commenting.
-Secure Authentication: JWT-based session management with secure cross-site cookies and OTP-based password recovery via email.
-Modern UI/UX: Responsive glassmorphism design built with Tailwind CSS v4, featuring custom animations and seamless page transitions.
-🛠️ Installation & Setup
-Prerequisites
-Node.js (v18+)
-MongoDB Atlas account
-Cloudinary account (for media storage)
-Backend Setup
-Navigate to the backend folder.
-Create a .env file based on .env.example.
-Install dependencies: npm install
-Start development server: npm run dev
-Frontend Setup
-Navigate to the frontend folder.
-Create a .env file with VITE_SERVER_URL=http://localhost:8000.
-Install dependencies: npm install
-Start development server: npm run dev
-📡 API Endpoints
-/api/auth: Signup, Signin, Signout, OTP verification.
-/api/user: Profiles, search, follow system, notifications.
-/api/post: Media uploads, feed retrieval, likes, comments.
-/api/loop: Short-form video management.
-/api/message: Real-time chat history.
-/api/story: Story uploads and viewer tracking.
+Vibely Connect is a production-ready, full-stack social media application built with a scalable architecture and real-time communication system.  
+
+It supports media-rich content, short-form videos ("Loops"), instant messaging, and a dynamic personalized feed — designed with performance, scalability, and security in mind.
+
+---
+
+## 🌍 Live Deployment
+
+Frontend (Vercel):  
+Backend (Render):
+
+---
+
+## 🧠 Architecture Overview
+
+The system follows a modular client-server architecture:
+
+- **Frontend (SPA)** communicates with backend via REST APIs
+- **Real-time communication layer** powered by Socket.io
+- **JWT-based authentication** with secure HTTP-only cookies
+- **Cloudinary CDN** for optimized media storage & delivery
+- **MongoDB Atlas** for scalable document storage
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React 19
+- Redux Toolkit (State Management)
+- React Router v7
+- Tailwind CSS v4
+- Axios
+- Socket.io-client
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (Mongoose ODM)
+- Socket.io
+- JWT Authentication
+- Cloudinary (Media Storage)
+- Nodemailer (Email Services)
+
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
+
+---
+
+## ✨ Core Functionalities
+
+### 🔴 Real-Time System
+- Instant messaging
+- Live notification delivery
+- Online/offline presence tracking
+- WebSocket-based bidirectional communication
+
+### 🎥 Media Engine
+- Image & video posts
+- Short-form vertical video system ("Loops")
+- Ephemeral Stories (auto-expiring)
+- Cloud-based optimized media storage
+- Lazy loading & performance-optimized playback
+
+### 👥 Social Graph Engine
+- Follow/Unfollow system
+- Personalized dynamic feed generation
+- Like/Unlike functionality
+- Nested comment threads
+- Real-time engagement updates
+
+### 🔐 Authentication & Security
+- JWT-based session management
+- Secure HTTP-only cookies
+- OTP-based password recovery via email
+- Route protection middleware
+- Input validation & sanitization
+- Password hashing (bcrypt)
+
+---
+
+## 📊 System Highlights (Interview-Ready Points)
+
+- Designed scalable REST API structure with modular controllers.
+- Implemented real-time chat system using Socket.io with user-room mapping.
+- Built dynamic feed aggregation using MongoDB queries.
+- Integrated CDN-based media storage via Cloudinary.
+- Implemented secure authentication with token validation middleware.
+- Optimized frontend performance using Redux state normalization.
+- Designed responsive, mobile-first UI with Tailwind CSS v4.
+- Structured project using separation of concerns (routes, controllers, services).
+
+---
+
+## 📂 Project Structure
