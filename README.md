@@ -94,6 +94,4 @@ The system follows a modular client-server architecture:
 - Designed responsive, mobile-first UI with Tailwind CSS v4.
 - Structured project using separation of concerns (routes, controllers, services).
 
----
-
-## 📂 Project Structure
+--
