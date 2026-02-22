@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoPeopleOutline } from "react-icons/io5";
 import { FaUserFriends } from "react-icons/fa";
 import axios from 'axios';
-import { serverUrl } from '../App';
+import serverUrl from '../config/server';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchData } from '../redux/userSlice';
 import dp from "../assets/dp.webp"

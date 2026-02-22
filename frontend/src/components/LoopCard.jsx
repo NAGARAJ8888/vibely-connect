@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MdOutlineComment } from "react-icons/md";
 import { setLoopData } from '../redux/loopSlice';
 import axios from 'axios';
-import { serverUrl } from '../App';
+import serverUrl from '../config/server';
 import { IoSendSharp } from "react-icons/io5";
 function LoopCard({ loop }) {
     const videoRef = useRef()

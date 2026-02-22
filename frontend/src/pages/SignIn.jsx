@@ -4,7 +4,7 @@ import logo1 from "../assets/logo.png"
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import axios from "axios"
-import { serverUrl } from '../App';
+import serverUrl from '../config/server';
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';

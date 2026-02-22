@@ -7,7 +7,7 @@ import { IoMdSend } from "react-icons/io";
 import dp from "../assets/dp.webp"
 import SenderMessage from '../components/SenderMessage';
 import axios from 'axios';
-import { serverUrl } from '../App';
+import serverUrl from '../config/server';
 import { setMessages } from '../redux/messageSlice';
 import ReceiverMessage from '../components/ReceiverMessage';
 function MessageArea() {
