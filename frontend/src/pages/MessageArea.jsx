@@ -54,8 +54,13 @@ const getAllMessages=async ()=>{
   }
 }
 useEffect(()=>{
-getAllMessages()
-},[])
+    if (selectedUser?._id) {
+        getAllMessages()
+    }
+    return () => {
+        dispatch(setMessages([]))
+    }
+},[selectedUser?._id])
 
 useEffect(()=>{
 socket?.on("newMessage",(mess)=>{
