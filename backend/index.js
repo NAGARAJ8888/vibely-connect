@@ -26,7 +26,9 @@ app.use("/api/post",postRouter)
 app.use("/api/loop",loopRouter)
 app.use("/api/story",storyRouter)
 app.use("/api/message",messageRouter)
-
+app.get("/", (req, res) => {
+    res.send("Vibely Backend is Running 🚀");
+});
 
 server.listen(port , ()=>{
     connectDb()
