@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from "../assets/logo.png"
+import logo from "../assets/vibely.png"
 import { MdNotificationsNone } from "react-icons/md";
 import dp from "../assets/dp.webp"
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import logo from "../assets/logo2.png"
-import logo1 from "../assets/logo.png"
+import logo1 from "../assets/vibely.png"
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import axios from "axios"
