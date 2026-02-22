@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoPeopleOutline } from "react-icons/io5";
 import { FaUserFriends } from "react-icons/fa";
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchData } from '../redux/userSlice';
 import dp from "../assets/dp.webp"
@@ -152,7 +152,7 @@ function Search() {
                             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                                 {searchData.map((user, index) => (
                                     <div
-                                        key={index}
+                                        key={user._id || index}
                                         onClick={() => navigate(`/profile/${user.userName}`)}
                                         className='group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-[1.02]'
                                     >

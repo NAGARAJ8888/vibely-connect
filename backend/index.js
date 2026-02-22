@@ -1,5 +1,6 @@
-import express from "express"
 import dotenv from "dotenv"
+dotenv.config()
+import express from "express"
 import connectDb from "./config/db.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
@@ -10,17 +11,15 @@ import loopRouter from "./routes/loop.routes.js"
 import storyRouter from "./routes/story.routes.js"
 import messageRouter from "./routes/message.routes.js"
 import { app, server } from "./socket.js"
-dotenv.config()
 
 const port=process.env.PORT || 5000
-
-app.set("trust proxy", 1);
+const allowedOrigins = [
+    "http://localhost:5173",
+    process.env.FRONTEND_URL
+].filter(Boolean);
 
 app.use(cors({
-    origin:[
-        "http://localhost:5173",
-        process.env.FRONTEND_URL
-    ],
+    origin: allowedOrigins,
     credentials:true
 }))
 app.use(express.json())

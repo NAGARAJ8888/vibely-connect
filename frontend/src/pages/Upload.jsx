@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import VideoPlayer from '../components/VideoPlayer';
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPostData } from '../redux/postSlice';
 import { setCurrentUserStory, setStoryData } from '../redux/storySlice';

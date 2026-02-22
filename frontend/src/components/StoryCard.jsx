@@ -82,6 +82,7 @@ function StoryCard({ storyData }) {
               <div className="flex relative">
                 {storyData?.viewers?.slice(0, 3).map((viewer, index) => (
                   <div
+                    key={viewer?._id || index}
                     className={`w-[30px] h-[30px]  border-2 border-black rounded-full cursor-pointer overflow-hidden ${index > 0 ? `absolute left-[${index * 10}px]` : ""}`}
                   >
                     <img
@@ -128,7 +129,7 @@ function StoryCard({ storyData }) {
             </div>
             <div className="w-full max-h-full flex flex-col gap-[10px] overflow-auto pt-[20px]">
               {storyData?.viewers?.map((viewer, index) => (
-                <div className="w-full flex items-center   gap-[20px]">
+                <div key={viewer?._id || index} className="w-full flex items-center   gap-[20px]">
                   <div className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] border-2 border-black rounded-full cursor-pointer overflow-hidden">
                     <img
                       src={viewer?.profileImage || dp}

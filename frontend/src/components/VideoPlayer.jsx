@@ -18,16 +18,18 @@ if(isPlaying){
 }
 }
 useEffect(()=>{
-   const observer = new IntersectionObserver(([entry]) => {
-            const video = videoTag.current
-            if (entry.isIntersecting) {
-                video.play()
-                setIsplaying(true)
-            } else {
-                video.pause()
-                 setIsplaying(false)
-            }
-        }, { threshold: 0.6 })
+    const observer = new IntersectionObserver(([entry]) => {
+             const video = videoTag.current
+             if (video) {
+                 if (entry.isIntersecting) {
+                     video.play().catch(err => console.log("Video play error:", err))
+                     setIsplaying(true)
+                 } else {
+                     video.pause()
+                     setIsplaying(false)
+                 }
+             }
+         }, { threshold: 0.6 })
         if (videoTag.current) {
             observer.observe(videoTag.current)
         }

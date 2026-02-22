@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
-import serverUrl from '../config/server';
+import { serverUrl } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFollowing, setUserData } from '../redux/userSlice'
 import { setCurrentUserStory } from '../redux/storySlice'
@@ -15,7 +15,9 @@ const fetchUser=async ()=>{
          dispatch(setUserData(result.data))
          dispatch(setCurrentUserStory(result.data.story))
     } catch (error) {
-        console.log(error)
+         if (error.response?.status !== 401) {
+             console.log(error)
+         }
     }
 }
 fetchUser()

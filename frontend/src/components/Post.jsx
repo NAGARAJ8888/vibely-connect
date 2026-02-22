@@ -9,7 +9,7 @@ import { MdOutlineBookmarkBorder } from "react-icons/md";
 import { GoBookmarkFill } from "react-icons/go";
 import { IoSendSharp } from "react-icons/io5";
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import { setPostData } from '../redux/postSlice';
 import { setUserData } from '../redux/userSlice';
 import FollowButton from './FollowButton';
@@ -132,7 +132,7 @@ socket?.on("commentedPost",(updatedData)=>{
 
           <div className='w-full max-h-[300px] overflow-auto'>
             {post.comments?.map((com,index)=>(
-<div key={index} className='w-full px-[20px] py-[20px]  flex items-center gap-[20px] border-b-2 border-b-gray-200'>
+<div key={com._id || index} className='w-full px-[20px] py-[20px]  flex items-center gap-[20px] border-b-2 border-b-gray-200'>
    <div className='w-[40px] h-[40px] md:w-[60px] md:h-[60px] border-2 border-black rounded-full cursor-pointer overflow-hidden'>
             <img src={com.author.profileImage || dp} alt="" className='w-full object-cover' />
           </div>

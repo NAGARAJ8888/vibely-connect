@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import serverUrl from '../config/server';
+import { serverUrl } from '../App'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProfileData, setUserData } from '../redux/userSlice'
@@ -154,7 +154,7 @@ function Profile() {
                                 <div className='flex items-center gap-2'>
                                     <div className='flex -space-x-2'>
                                         {profileData?.followers?.slice(0, 3).map((user, index) => (
-                                            <div key={index} className='w-6 h-6 rounded-full border-2 border-gray-900 overflow-hidden'>
+                                            <div key={user?._id || index} className='w-6 h-6 rounded-full border-2 border-gray-900 overflow-hidden'>
                                                 <img src={user.profileImage || dp} alt="" className='w-full h-full object-cover' />
                                             </div>
                                         ))}
@@ -168,7 +168,7 @@ function Profile() {
                                 <div className='flex items-center gap-2'>
                                     <div className='flex -space-x-2'>
                                         {profileData?.following?.slice(0, 3).map((user, index) => (
-                                            <div key={index} className='w-6 h-6 rounded-full border-2 border-gray-900 overflow-hidden'>
+                                            <div key={user?._id || index} className='w-6 h-6 rounded-full border-2 border-gray-900 overflow-hidden'>
                                                 <img src={user?.profileImage || dp} alt="" className='w-full h-full object-cover' />
                                             </div>
                                         ))}
@@ -260,14 +260,14 @@ function Profile() {
                                 <>
                                     {postType === "posts" && postData.map((post, index) => (
                                         post.author?._id === profileData?._id && (
-                                            <div key={index} className='transform hover:scale-105 transition-all duration-300'>
+                                            <div key={post._id || index} className='transform hover:scale-105 transition-all duration-300'>
                                                 <Post post={post} />
                                             </div>
                                         )
                                     ))}
                                     {postType === "saved" && postData.map((post, index) => (
                                         userData?.saved?.includes(post._id) && (
-                                            <div key={index} className='transform hover:scale-105 transition-all duration-300'>
+                                            <div key={post._id || index} className='transform hover:scale-105 transition-all duration-300'>
                                                 <Post post={post} />
                                             </div>
                                         )
@@ -276,7 +276,7 @@ function Profile() {
                             ) : (
                                 postData.map((post, index) => (
                                     post.author?._id === profileData?._id && (
-                                        <div key={index} className='transform hover:scale-105 transition-all duration-300'>
+                                        <div key={post._id || index} className='transform hover:scale-105 transition-all duration-300'>
                                             <Post post={post} />
                                         </div>
                                     )

@@ -27,13 +27,14 @@ function Messages() {
       <div className="w-full flex gap-[20px] justify-start items-center overflow-x-auto border-b-2 pb-5 border-gray-800">
         {userData.following?.map(
           (user, index) =>
-            onlineUsers?.includes(user._id) && <OnlineUser user={user} />,
+            onlineUsers?.includes(user._id) && <OnlineUser key={user._id || index} user={user} />,
         )}
       </div>
 
       <div className="w-full h-full overflow-auto flex flex-col gap-[20px]">
         {prevChatUsers?.map((user, index) => (
           <div
+            key={user._id || index}
             className="text-white cursor-pointer w-full flex  items-center gap-[10px]"
             onClick={() => {
               dispatch(setSelectedUser(user));

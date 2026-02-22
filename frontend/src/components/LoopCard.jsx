@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MdOutlineComment } from "react-icons/md";
 import { setLoopData } from '../redux/loopSlice';
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import { IoSendSharp } from "react-icons/io5";
 function LoopCard({ loop }) {
     const videoRef = useRef()
@@ -97,12 +97,14 @@ if(showComment){
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
             const video = videoRef.current
-            if (entry.isIntersecting) {
-                video.play()
-                setIsPlaying(true)
-            } else {
-                video.pause()
-                setIsPlaying(false)
+            if (video) {
+                if (entry.isIntersecting) {
+                    video.play().catch(err => console.log("Loop play error:", err))
+                    setIsPlaying(true)
+                } else {
+                    video.pause()
+                    setIsPlaying(false)
+                }
             }
         }, { threshold: 0.6 })
         if (videoRef.current) {
@@ -146,7 +148,7 @@ if(showComment){
     {loop.comments.length==0 && <div className='text-center text-white text-[20px] font-semibold mt-[50px]'>No Comments Yet</div>}
 
 {loop.comments?.map((com,index)=>(
-<div className='w-full  flex flex-col gap-[5px] border-b-[1px] border-gray-800 justify-center pb-[10px] mt-[10px]'>
+<div key={com._id || index} className='w-full  flex flex-col gap-[5px] border-b-[1px] border-gray-800 justify-center pb-[10px] mt-[10px]'>
 <div className='flex justify-start items-center md:gap-[20px] gap-[10px]'>
           <div className='w-[30px] h-[30px] md:w-[40px] md:h-[40px] border-2 border-black rounded-full cursor-pointer overflow-hidden'>
             <img src={com.author?.profileImage || dp} alt="" className='w-full object-cover' />

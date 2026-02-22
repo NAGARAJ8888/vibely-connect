@@ -4,7 +4,7 @@ import { MdNotificationsNone } from "react-icons/md";
 import dp from "../assets/dp.webp"
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import { setUserData } from '../redux/userSlice';
 import OtherUser from './OtherUser';
 import Notifications from '../pages/Notifications';
@@ -52,7 +52,7 @@ const {notificationData}=useSelector(state=>state.user)
 <div className='w-full flex flex-col gap-[20px] p-[20px]'>
     <h1 className='text-[white] text-[19px]'>Suggested Users</h1>
     {suggestedUsers && suggestedUsers.slice(0,3).map((user,index)=>(
-        <OtherUser key={index} user={user}/>
+        <OtherUser key={user._id || index} user={user}/>
     ))}
 </div>
       </>}

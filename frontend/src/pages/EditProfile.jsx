@@ -6,7 +6,7 @@ import dp from "../assets/dp.webp"
 import { useRef } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import { setProfileData, setUserData } from '../redux/userSlice';
 import { ClipLoader } from 'react-spinners';
 function EditProfile() {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import serverUrl from '../config/server';
+import { serverUrl } from '../App'
 import { setFollowing, toggleFollow } from '../redux/userSlice'
 
 function FollowButton({targetUserId,tailwind,onFollowChange}) {

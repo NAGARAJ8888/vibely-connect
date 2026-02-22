@@ -25,7 +25,7 @@ import Search from './pages/Search'
 import getAllNotifications from './hooks/getAllNotifications'
 import Notifications from './pages/Notifications'
 import { setNotificationData } from './redux/userSlice'
-import serverUrl from "./config/server";
+export const serverUrl="http://localhost:8000"
 function App() {
    getCurrentUser()
    getSuggestedUsers()
@@ -41,7 +41,7 @@ function App() {
     const dispatch=useDispatch()
  useEffect(()=>{
   if(userData){
-    const socketIo=io(serverUrl,{
+    const socketIo=io(`${serverUrl}`,{
       query:{
         userId:userData._id
       }
@@ -65,17 +65,11 @@ return ()=>socketIo.close()
  },[userData])
 
 
-useEffect(() => {
-  if (socket) {
-    socket.on("newNotification", (noti) => {
-      dispatch(setNotificationData(prev => [...prev, noti]));
-    });
+socket?.on("newNotification",(noti)=>{
+  if (notificationData) {
+    dispatch(setNotificationData([...notificationData,noti]))
   }
-
-  return () => {
-    socket?.off("newNotification");
-  };
-}, [socket]);
+})
 
   return (
     <Routes>

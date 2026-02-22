@@ -10,6 +10,7 @@ import { IoChatbubbleOutline } from "react-icons/io5";
 import Post from './Post';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import './Feed.css';
 
 function Feed() {
   const { postData } = useSelector(state => state.post)
@@ -105,7 +106,7 @@ function Feed() {
 
             {/* Other Stories */}
             {storyList?.map((story, index) => (
-              <div key={index} className='snap-start'>
+              <div key={story._id || index} className='snap-start'>
                 <StoryDp 
                   userName={story.author.userName} 
                   ProfileImage={story.author.profileImage} 
@@ -142,7 +143,7 @@ function Feed() {
             {postData && postData.length > 0 ? (
               postData.map((post, index) => (
                 <div 
-                  key={index} 
+                  key={post._id || index} 
                   className='transform transition-all duration-300 hover:scale-[1.02]'
                 >
                   <Post post={post} />
@@ -193,35 +194,6 @@ function Feed() {
       <div className='flex justify-center items-center'>
         <Nav />
       </div>
-      
-
-      {/* Custom Scrollbar Styles */}
-      <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        
-        #feed-container::-webkit-scrollbar {
-          width: 6px;
-        }
-        
-        #feed-container::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.05);
-        }
-        
-        #feed-container::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-          border-radius: 3px;
-        }
-        
-        #feed-container::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, #2563eb, #7c3aed);
-        }
-      `}</style>
     </div>
   )
 }

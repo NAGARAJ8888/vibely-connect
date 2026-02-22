@@ -7,7 +7,7 @@ import { IoMdSend } from "react-icons/io";
 import dp from "../assets/dp.webp"
 import SenderMessage from '../components/SenderMessage';
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import { setMessages } from '../redux/messageSlice';
 import ReceiverMessage from '../components/ReceiverMessage';
 function MessageArea() {
@@ -86,7 +86,7 @@ return ()=>socket?.off("newMessage")
 
       <div className='w-full h-[80%] pt-[100px]  px-[40px] flex flex-col gap-[50px] overflow-auto bg-black'>
 {messages && messages?.map((mess,index)=>
-  mess.sender==userData._id?<SenderMessage message={mess}/>:<ReceiverMessage message={mess}/>
+  mess.sender==userData._id?<SenderMessage key={mess._id || index} message={mess}/>:<ReceiverMessage key={mess._id || index} message={mess}/>
 )}
       </div>
 

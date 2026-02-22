@@ -4,7 +4,7 @@ import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
 import NotificationCard from '../components/NotificationCard';
 import axios from 'axios';
-import serverUrl from '../config/server';
+import { serverUrl } from '../App';
 import getAllNotifications from '../hooks/getAllNotifications';
 import { setNotificationData } from '../redux/userSlice';
 function Notifications() {
@@ -43,7 +43,7 @@ const fetchNotifications=async ()=>{
 
                   <div className='w-full flex flex-col gap-[20px] h-100%]  px-[10px]'>
 {notificationData?.map((noti,index)=>(
-    <NotificationCard noti={noti} key={index}/>
+    <NotificationCard noti={noti} key={noti._id || index}/>
 ))}
                   </div>
     </div>

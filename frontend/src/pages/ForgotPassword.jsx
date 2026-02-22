@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { ClipLoader } from 'react-spinners'
-import serverUrl from '../config/server';
+import { serverUrl } from '../App'
 
 function ForgotPassword() {
     const [step,setStep]=useState(1)
