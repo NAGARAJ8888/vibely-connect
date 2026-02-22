@@ -48,7 +48,7 @@ const handleSignUp=async ()=>{
 
 <div className='flex gap-[10px] items-center text-[20px] font-semibold mt-[40px]'>
     <span>Sign Up to </span>
-    <img src="./public/vibely.png" alt="" className='w-[70px]'/>
+    <img src="/vibely.png" alt="" className='w-[70px]'/>
 </div>
 
 <div className='relative flex items-center justify-start w-[90%] h-[50px] rounded-2xl mt-[30px] border-2 border-black' onClick={()=>setInputClicked({...inputClicked,name:true})}>
@@ -79,7 +79,7 @@ const handleSignUp=async ()=>{
 </div>
 <div className='md:w-[50%] h-full hidden lg:flex justify-center items-center bg-[#000000] flex-col gap-[10px] text-white text-[16px] font-semibold rounded-l-[30px] shadow-2xl shadow-black'>
 
-<img src="./public/vibely.png" alt="" className='w-[40%]'/>
+<img src="/vibely.png" alt="" className='w-[40%]'/>
 <p >Not Just Social, It’s Vibely</p>
 </div>
       </div>
