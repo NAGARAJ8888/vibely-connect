@@ -12,10 +12,11 @@ const userSlice=createSlice({
     reducers:{
        setUserData:(state,action)=>{
         state.userData=action.payload
-        if (action.payload?.following) {
-            state.following = action.payload.following.map(user => 
-                typeof user === 'object' ? user._id : user
-            )
+        if (action.payload?.following && Array.isArray(action.payload.following)) {
+            state.following = action.payload.following.map(user => {
+                const id = typeof user === 'object' ? user._id : user
+                return id ? id.toString() : null
+            }).filter(Boolean)
         }
        } ,
        setSuggestedUsers:(state,action)=>{
@@ -31,15 +32,15 @@ const userSlice=createSlice({
         state.notificationData=action.payload
        },
        setFollowing:(state,action)=>{
-        state.following=action.payload
+        state.following=Array.isArray(action.payload) ? action.payload.map(id => id.toString()) : []
        },
        toggleFollow:(state,action)=>{
-        const targetUserId=action.payload
-if(state.following.includes(targetUserId)){
-    state.following=state.following.filter(id=>id!=targetUserId)
-}else{
-    state.following.push(targetUserId)
-}
+        const targetUserId=action.payload.toString()
+        if(state.following.some(id => id.toString() === targetUserId)){
+            state.following=state.following.filter(id=>id.toString() !== targetUserId)
+        }else{
+            state.following.push(targetUserId)
+        }
        }
     }
 

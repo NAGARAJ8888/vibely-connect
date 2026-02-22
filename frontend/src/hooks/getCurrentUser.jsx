@@ -21,7 +21,7 @@ const fetchUser=async ()=>{
     }
 }
 fetchUser()
-  },[storyData])
+  }, [])
 }
 
 export default getCurrentUser

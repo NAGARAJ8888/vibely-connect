@@ -51,7 +51,7 @@ function Feed() {
         <div className='flex items-center justify-between px-4 sm:px-6 py-3'>
           {/* Logo */}
           <img 
-            src="/vibely.png"
+            src={logo} 
             alt="Logo" 
             className='w-20 sm:w-24 cursor-pointer hover:opacity-80 transition-opacity'
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
