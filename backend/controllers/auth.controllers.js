@@ -29,12 +29,12 @@ export const signUp=async (req,res)=>{
 
         const token=await genToken(user._id)
 
-        res.cookie("token",token,{
-            httpOnly:true,
-            maxAge:10*365*24*60*60*1000,
-            secure:false,
-            sameSite:"Strict"
-        })
+        res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: 10 * 365 * 24 * 60 * 60 * 1000,
+        secure: true,          // REQUIRED for HTTPS
+        sameSite: "none"       // REQUIRED for cross-site
+        });
 
         return res.status(201).json(user)
 
