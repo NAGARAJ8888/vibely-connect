@@ -32,8 +32,8 @@ export const signUp=async (req,res)=>{
         res.cookie("token",token,{
             httpOnly:true,
             maxAge:10*365*24*60*60*1000,
-            secure:false,
-            sameSite:"Strict"
+            secure: process.env.NODE_ENV === "production" || !!process.env.FRONTEND_URL,
+            sameSite: (process.env.NODE_ENV === "production" || !!process.env.FRONTEND_URL) ? "None" : "Lax"
         })
 
         return res.status(201).json(user)
@@ -63,8 +63,8 @@ export const signIn=async (req,res)=>{
         res.cookie("token",token,{
             httpOnly:true,
             maxAge:10*365*24*60*60*1000,
-            secure:false,
-            sameSite:"Strict"
+            secure: process.env.NODE_ENV === "production" || !!process.env.FRONTEND_URL,
+            sameSite: (process.env.NODE_ENV === "production" || !!process.env.FRONTEND_URL) ? "None" : "Lax"
         })
 
         return res.status(200).json(user)
@@ -77,7 +77,11 @@ export const signIn=async (req,res)=>{
 
 export const signOut=async (req,res)=>{
     try {
-        res.clearCookie("token")
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production" || !!process.env.FRONTEND_URL,
+            sameSite: (process.env.NODE_ENV === "production" || !!process.env.FRONTEND_URL) ? "None" : "Lax"
+        })
         return res.status(200).json({message:"sign out successfully"})
     } catch (error) {
         return res.status(500).json({message:`signout error ${error}`})
