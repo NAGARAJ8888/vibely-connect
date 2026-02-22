@@ -20,7 +20,7 @@ const fetchUser=async ()=>{
     }
 }
 fetchUser()
-  },[storyData])
+  },[userData, dispatch])
 }
 
 export default getFollowingList

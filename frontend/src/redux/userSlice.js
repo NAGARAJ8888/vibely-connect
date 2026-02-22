@@ -12,6 +12,11 @@ const userSlice=createSlice({
     reducers:{
        setUserData:(state,action)=>{
         state.userData=action.payload
+        if (action.payload?.following) {
+            state.following = action.payload.following.map(user => 
+                typeof user === 'object' ? user._id : user
+            )
+        }
        } ,
        setSuggestedUsers:(state,action)=>{
         state.suggestedUsers=action.payload

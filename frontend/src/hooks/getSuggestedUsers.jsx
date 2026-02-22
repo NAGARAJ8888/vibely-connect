@@ -18,7 +18,7 @@ const fetchUser=async ()=>{
     }
 }
 fetchUser()
-  },[userData])
+  }, [userData, dispatch])
 }
 
 export default getSuggestedUsers
